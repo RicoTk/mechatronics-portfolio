@@ -32,7 +32,7 @@ All projects follow a formal engineering workflow:
 
 ## Featured Projects
 
-### 🚜 AGV V1 – Agricultural Autonomous Ground Vehicle
+### AGV V1 – Agricultural Autonomous Ground Vehicle
 
 A 24V, 2WD agricultural prototype designed for:
 
@@ -53,7 +53,7 @@ A 24V, 2WD agricultural prototype designed for:
 
 ---
 
-### 🌾 Modular Crop Storage System (In Development)
+### Modular Crop Storage System (In Development)
 
 Low-cost, scalable agricultural storage solution with thermal and airflow analysis focus.
 
