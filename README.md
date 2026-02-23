@@ -3,6 +3,7 @@
 This repository documents the structured design, analysis, and implementation of mechatronics systems developed as part of a focused engineering growth program.
 
 **Projects emphasize:**
+
   Controls Engineering
   Embedded Systems & Firmware
   Power Electronics & Motor Control
