@@ -22,7 +22,7 @@ This repository documents the structured design, analysis, and implementation of
 
 **Featured Projects**
 
-**🚜 AGV V1 – Agricultural Autonomous Ground Vehicle**
+**AGV V1 – Agricultural Autonomous Ground Vehicle**
 
 A 24V, 2WD agricultural prototype designed for 50 kg gross mass and 20 kg payload, optimized for Sub-Saharan field conditions.
 
@@ -34,7 +34,7 @@ Closed-loop speed control (in development)
 Safety and fault architecture
 Verification and performance envelope definition
 
-**🌾 Modular Crop Storage System (In Development)**
+**Modular Crop Storage System (In Development)**
 
 Low-cost, scalable agricultural storage solution with thermal and airflow analysis focus.
 
