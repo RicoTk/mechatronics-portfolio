@@ -9,16 +9,11 @@ long lastCount = 0;
 const float dt = 0.1f;          // 100 ms sample
 const int sampleMs = 100;
 
-// IMPORTANT:
-// CPR = counts per revolution (what YOUR code counts per rev).
-// Because we count A on CHANGE => 2 edges per A pulse.
-// If your encoder is specified as PPR (channel A pulses per rev),
-// then CPR = 2 * PPR.
-// Put your best current estimate here and update when you find the datasheet.
-const float CPR = 1200.0f;      // example: PPR=600 -> CPR=1200 (A CHANGE)
+
+const float CPR = 1200.0f;      // PPR=600 -> CPR=1200 
 
 float rpmFilt = 0.0f;
-const float alpha = 0.80f;      // closer to 1 = more smoothing
+const float alpha = 0.80f;      //higher == smoother
 
 void setup() {
   Serial.begin(115200);
@@ -63,7 +58,7 @@ void handleEncoderA() {
   bool A = digitalRead(pinA);
   bool B = digitalRead(pinB);
 
-  // Direction decode (works for many encoders; if reversed, swap ++/--)
+  // Direction decode 
   if (A == B) encoderCount++;
   else        encoderCount--;
 }
