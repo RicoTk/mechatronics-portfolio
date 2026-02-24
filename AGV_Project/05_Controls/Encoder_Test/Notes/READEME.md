@@ -1,4 +1,4 @@
-# Day 2 – Encoder RPM Measurement (Manual)
+# Encoder RPM Measurement (Manual)
 
 ## Setup
 - Arduino Mega
