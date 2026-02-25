@@ -6,7 +6,7 @@
 - Example: τ dy/dt + y = x
 - This example is the standard form of a first-order dynamic system
 - These systems: Respond gradually; Cannot change instantly; Have inertia; and Smooth inputs over time
-- τ defines: How fast the system reacts; How much lag it introduces
+- τ (time constant) defines: How fast the system reacts; How much lag it introduces; It affects the system's dynamic behavior
 - Large τ -> slower response; more smoothing
 - Small τ -> faster response; less smoothing
 
