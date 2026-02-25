@@ -4,6 +4,10 @@
 - Defined by differential equations
 - Time flows continuously
 - Example: τ dy/dt + y = x
+- This example is the standard form of a first-order dynamic system
+- These systems:
+-```Respond gradually
+
 
 ## Discrete-Time System
 - Defined by difference equations
