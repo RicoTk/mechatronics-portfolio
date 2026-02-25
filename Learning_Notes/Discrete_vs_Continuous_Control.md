@@ -30,6 +30,9 @@
 - There is always tension between: Responsiveness; Noise Rejection; and Stability Margin. The three can't be maximized.
 - If filtered signal becomes equal to raw signal:  all quantization noise, measurement jitter, timing issues, and vibrations pass through
 - In a PI loop: the proportional term reacts immediately to error, in the integral term, error gets accumulated and causes drift
+- P reacts to noise instantaneously
+- I reacts to sustained bias
+- Quantization errors occur when the error becomes large relative to the signal (example: a +-1 error to a signal with an average of 2). Solution: better measurement resolution.
 
 | Term | Sensitive to Noise? | Why                                                |
 | ---- | ------------------- | -------------------------------------------------- |
@@ -38,3 +41,9 @@
 | D    | Extremely           | Amplifies noise (d/dt effect)                      |
 
 
+## Miscellaneous Notes
+- EMA filter = first-order low-pass (IIR)
+- τ depends on DT and α
+- Sampling changes dynamics
+- Low-speed quantization is the bottleneck
+- Noise impacts P-term instantly; bias impacts I-term slowly
