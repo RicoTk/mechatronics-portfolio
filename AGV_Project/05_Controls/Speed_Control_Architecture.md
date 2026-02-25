@@ -11,8 +11,8 @@ Maintain target wheel speed (RPM) under varying load using closed-loop control.
 
 ## Update Rates
 - Encoder ISR: edge-based
-- Velocity estimate update: ___ ms
-- Control loop update: ___ ms (typically same as velocity update)
+- Velocity estimate update: 50 ms
+- Control loop update: 50 ms (typically same as velocity update)
 
 ## Controller
 - Type: PI controller
@@ -23,7 +23,7 @@ Maintain target wheel speed (RPM) under varying load using closed-loop control.
 ## Output Limits & Safety
 - Saturation: u clipped to [u_min, u_max]
 - Anti-windup: freeze/clamp integrator when saturated
-- Fault handling: if rpm_meas invalid for > ___ ms → set u=0
+- Fault handling: if rpm_meas invalid for > 300 ms → set u=0
 
 ## Testing Plan
 1. Open-loop step test (command → response)
