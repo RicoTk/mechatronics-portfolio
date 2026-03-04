@@ -112,9 +112,9 @@ Read FAIL
 
 A raw RX dump was implemented to inspect the serial data.
 
-Example:
-TX: 01 03 00 5F 00 01 B4 18
-RX: 01 03 00 5F 00 01 B4 18
+Example:  
+TX: 01 03 00 5F 00 01 B4 18  
+RX: 01 03 00 5F 00 01 B4 18 
     01 03 02 00 00 B8 44
 
 Two frames were observed:
@@ -211,13 +211,14 @@ This reduces bus load and increases reliability.
 0x06
 
 
-### Registers used:
+### Registers used:  
 
-Register	Description
-0x0136	Control mode
-0x0076	Clear fault
-0x0066	Run command
-0x0056	Speed reference
+| Register | Description |
+|------|------|
+| 0x0136 | Control mode |
+| 0x0076 | Clear fault |
+| 0x0066 | Run command |
+| 0x0056 | Speed reference |
 
 
 ### Startup sequence:
@@ -237,11 +238,12 @@ Read Commands
 0x03
 
 
-### Registers used:
+### Registers used:  
 
-Register  	Data
-0x005F	  | Actual motor speed
-0x00B6	  | Motor current
+| Register | Data |
+|------|------|
+| 0x005F | Actual motor speed |
+| 0x00B6 | Motor current |
 
 
 ### Final Telemetry Logging Format
