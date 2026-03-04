@@ -1,0 +1,171 @@
+#include <Arduino.h>
+
+const uint8_t DE_PIN = 4;
+const uint8_t SLAVE_ID = 0x01;
+
+// Registers
+const uint16_t REG_MODE      = 0x0136;
+const uint16_t REG_FAULT     = 0x0076;
+const uint16_t REG_RUN       = 0x0066;
+const uint16_t REG_SPEED_SET = 0x0056;
+
+const uint16_t REG_SPEED_ACT = 0x005F;
+const uint16_t REG_CURRENT   = 0x00B6;
+
+const uint16_t CMD_RPM = 1000;
+
+// Manual: 25 counts = 1A
+static inline float currentA_fromRaw(uint16_t raw) {
+  return raw / 25.0f;
+}
+
+uint16_t crc16(const uint8_t *buf, uint8_t len) {
+  uint16_t crc = 0xFFFF;
+  for (uint8_t i = 0; i < len; i++) {
+    crc ^= buf[i];
+    for (uint8_t j = 0; j < 8; j++) {
+      if (crc & 1) crc = (crc >> 1) ^ 0xA001;
+      else crc >>= 1;
+    }
+  }
+  return crc;
+}
+
+void txEnable() { digitalWrite(DE_PIN, HIGH); delayMicroseconds(20); }
+void txDisable(){ digitalWrite(DE_PIN, LOW);  delayMicroseconds(20); }
+void clearRx()  { while (Serial1.available()) Serial1.read(); }
+
+uint8_t readBytes(uint8_t* buf, uint8_t len, uint16_t timeout) {
+  uint8_t got = 0;
+  uint32_t t0 = millis();
+  while ((millis() - t0 < timeout) && got < len) {
+    if (Serial1.available()) buf[got++] = Serial1.read();
+  }
+  return got;
+}
+
+void sendFrame(uint8_t* frame, uint8_t len) {
+  clearRx();
+
+  txEnable();
+  Serial1.write(frame, len);
+  Serial1.flush();
+  delayMicroseconds(120);
+  txDisable();
+
+  delay(6); // RTU quiet time
+}
+
+void write06(uint16_t reg, uint16_t val) {
+  uint8_t frame[8];
+  frame[0] = SLAVE_ID;
+  frame[1] = 0x06;
+  frame[2] = reg >> 8;
+  frame[3] = reg & 0xFF;
+  frame[4] = val >> 8;
+  frame[5] = val & 0xFF;
+
+  uint16_t c = crc16(frame, 6);
+  frame[6] = c & 0xFF;
+  frame[7] = c >> 8;
+
+  sendFrame(frame, 8);
+
+  // consume echo of our own request (8 bytes) if present
+  uint8_t echo[8];
+  (void)readBytes(echo, 8, 50);
+
+  delay(10);
+}
+
+bool read1_holding_echo(uint16_t reg, uint16_t &val) {
+  // func 0x03
+  uint8_t req[8];
+  req[0] = SLAVE_ID;
+  req[1] = 0x03;
+  req[2] = reg >> 8;
+  req[3] = reg & 0xFF;
+  req[4] = 0;
+  req[5] = 1;
+
+  uint16_t c = crc16(req, 6);
+  req[6] = c & 0xFF;
+  req[7] = c >> 8;
+
+  sendFrame(req, 8);
+
+  // discard echo request (8 bytes)
+  uint8_t echo[8];
+  if (readBytes(echo, 8, 80) != 8) return false;
+
+  // response: 01 03 02 hi lo crc crc
+  uint8_t resp[7];
+  if (readBytes(resp, 7, 200) != 7) return false;
+
+  if (resp[0] != SLAVE_ID || resp[1] != 0x03 || resp[2] != 0x02) return false;
+
+  uint16_t rcrc = resp[5] | (resp[6] << 8);
+  if (crc16(resp, 5) != rcrc) return false;
+
+  val = (uint16_t(resp[3]) << 8) | resp[4];
+  return true;
+}
+
+bool readSpeedNext = true;
+uint16_t lastSpeed = 0;
+uint16_t lastCurRaw = 0;
+
+void setup() {
+  pinMode(DE_PIN, OUTPUT);
+  txDisable();
+
+  Serial.begin(115200);
+  Serial1.begin(9600); // 8N1 (verified)
+  delay(500);
+
+  Serial.println("t_ms,cmd_rpm,speed_raw,curr_raw,curr_A");
+
+  // init
+  write06(REG_MODE, 1);
+  write06(REG_FAULT, 0);
+  write06(REG_RUN, 0);
+  write06(REG_SPEED_SET, 0);
+  delay(200);
+
+  write06(REG_RUN, 1);
+  write06(REG_SPEED_SET, CMD_RPM);
+  delay(300);
+}
+
+void loop() {
+  static uint32_t lastCmd = 0;
+  static uint32_t lastPrint = 0;
+  uint32_t now = millis();
+
+  // refresh command occasionally
+  if (now - lastCmd > 2000) {
+    write06(REG_RUN, 1);
+    write06(REG_SPEED_SET, CMD_RPM);
+    lastCmd = now;
+  }
+
+  // sample at 5 Hz
+  if (now - lastPrint >= 200) {
+    lastPrint = now;
+
+    if (readSpeedNext) {
+      uint16_t spd;
+      if (read1_holding_echo(REG_SPEED_ACT, spd)) lastSpeed = spd;
+    } else {
+      uint16_t cur;
+      if (read1_holding_echo(REG_CURRENT, cur)) lastCurRaw = cur;
+    }
+    readSpeedNext = !readSpeedNext;
+
+    Serial.print(now); Serial.print(",");
+    Serial.print(CMD_RPM); Serial.print(",");
+    Serial.print(lastSpeed); Serial.print(",");
+    Serial.print(lastCurRaw); Serial.print(",");
+    Serial.println(currentA_fromRaw(lastCurRaw), 3);
+  }
+}
