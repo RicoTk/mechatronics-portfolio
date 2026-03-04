@@ -49,9 +49,9 @@ BLD-305S BLDC Driver
 
 ### RS485 Bus
 
-Motor Driver A → MAX485 A
-Motor Driver B → MAX485 B
-Motor Driver GND → Arduino GND
+Motor Driver A → MAX485 A  
+Motor Driver B → MAX485 B  
+Motor Driver GND → Arduino GND  
 
 
 ---
