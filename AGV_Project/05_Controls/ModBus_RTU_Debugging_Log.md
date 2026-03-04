@@ -77,7 +77,7 @@ This caused communication errors and was removed.
 
 ---
 
-#Initial Goal
+# Initial Goal
 
 Create a script that:  
 - Sets the motor to internal control mode
