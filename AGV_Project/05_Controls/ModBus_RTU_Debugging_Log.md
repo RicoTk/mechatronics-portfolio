@@ -67,7 +67,6 @@ Stop bits: 1
 
 Arduino configuration:
 
-    cpp
 Serial1.begin(9600);
 
 Earlier attempts used:
