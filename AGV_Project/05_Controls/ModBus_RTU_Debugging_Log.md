@@ -239,7 +239,7 @@ Read Commands
 
 ### Registers used:
 
-Register  |	Data
+Register  	Data
 0x005F	  | Actual motor speed
 0x00B6	  | Motor current
 
