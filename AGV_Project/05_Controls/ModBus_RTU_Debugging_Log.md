@@ -167,9 +167,9 @@ This caused dropped responses and corrupted transactions.
 
 
 ## Solution
-Enforce a quiet interval after each Modbus transmission.
-delay(6 ms)
-This corresponds to the Modbus RTU silent interval requirement.
+Enforce a quiet interval after each Modbus transmission.  
+delay(6 ms) and increasing until proper request processing is established.  
+This corresponds to the Modbus RTU silent interval requirement.  
 
 
 
