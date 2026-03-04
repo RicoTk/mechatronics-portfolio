@@ -239,9 +239,9 @@ Read Commands
 
 ### Registers used:
 
-Register	Data
-0x005F	Actual motor speed
-0x00B6	Motor current
+Register  |	Data
+0x005F	  | Actual motor speed
+0x00B6	  | Motor current
 
 
 ### Final Telemetry Logging Format
