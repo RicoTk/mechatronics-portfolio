@@ -152,10 +152,10 @@ motor not spinning
 
 
 ## Investigation
-The script was issuing multiple Modbus requests sequentially:
-write command
-read speed
-read current
+The script was issuing multiple Modbus requests sequentially:  
+- write command
+- read speed
+- read current
 
 These were executed too quickly.
 At 9600 baud, Modbus RTU requires a silent interval between frames.
@@ -182,9 +182,9 @@ This corresponds to the Modbus RTU silent interval requirement.
 # Problem 3 — Bus Congestion From Sequential Reads
 Even after adding delays, sometimes only one variable would read correctly.
 
-The script was requesting:
-read speed
-read current
+The script was requesting:  
+- read speed
+- read current
 
 back-to-back.
 
@@ -221,15 +221,15 @@ This reduces bus load and increases reliability.
 | 0x0056 | Speed reference |
 
 
-### Startup sequence:
+### Startup sequence:  
 
-set internal control mode
-clear fault
-stop motor
-set speed = 0
-run forward
-set target speed
-Read Commands
+1. set internal control mode
+2. clear fault
+3. stop motor
+4. set speed = 0
+5. run forward
+6. set target speed
+7. Read Commands
 
 
 
