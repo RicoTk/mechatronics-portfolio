@@ -87,6 +87,14 @@ Create a script that:
 - Reads telemetry registers (speed and current)
 
 
+
+
+
+
+
+
+
+
 # Problem 1 — Modbus Read Commands Failing
 
 Symptoms
@@ -129,6 +137,11 @@ read actual response
 parse data
 
 
+
+
+
+
+
 # Problem 2 — Motor Stopped Working When Reads Were Added
 After implementing read commands, the motor stopped responding to speed commands.
 
@@ -159,6 +172,11 @@ delay(6 ms)
 This corresponds to the Modbus RTU silent interval requirement.
 
 
+
+
+
+
+
 # Problem 3 — Bus Congestion From Sequential Reads
 Even after adding delays, sometimes only one variable would read correctly.
 
@@ -179,6 +197,7 @@ Cycle 3 → read speed
 Cycle 4 → read current
 
 This reduces bus load and increases reliability.
+
 
 ---
 
