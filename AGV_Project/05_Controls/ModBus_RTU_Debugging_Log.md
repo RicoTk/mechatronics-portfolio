@@ -85,6 +85,7 @@ Commands the motor to run
 Sets a speed reference
 Reads telemetry registers (speed and current)
 
+
 # Problem 1 — Modbus Read Commands Failing
 
 Symptoms
@@ -96,6 +97,7 @@ READ FAIL
 Example debug output:
 got=0 (amount of bits received during read attempt)
 Read FAIL
+
 
 ## Investigation
 
@@ -110,9 +112,11 @@ Two frames were observed:
 Echo of the transmitted request
 Actual Modbus response from the motor driver
 
+
 ## Root Cause
 The MAX485 receiver was active during transmission, causing the Arduino to receive its own transmitted frame.
 The parser incorrectly interpreted the echo as the response.
+
 
 ## Solution
 Discard the echoed request before parsing the response.
@@ -123,6 +127,7 @@ read and discard 8 byte echo
 read actual response
 parse data
 
+
 # Problem 2 — Motor Stopped Working When Reads Were Added
 After implementing read commands, the motor stopped responding to speed commands.
 
@@ -130,6 +135,7 @@ Example log:
 speed_raw = 0
 curr_raw = 0
 motor not spinning
+
 
 ## Investigation
 The script was issuing multiple Modbus requests sequentially:
@@ -140,14 +146,17 @@ read current
 These were executed too quickly.
 At 9600 baud, Modbus RTU requires a silent interval between frames.
 
+
 ## Root Cause
 The motor driver was still processing the previous request when the next request arrived.
 This caused dropped responses and corrupted transactions.
+
 
 ## Solution
 Enforce a quiet interval after each Modbus transmission.
 delay(6 ms)
 This corresponds to the Modbus RTU silent interval requirement.
+
 
 # Problem 3 — Bus Congestion From Sequential Reads
 Even after adding delays, sometimes only one variable would read correctly.
@@ -157,6 +166,7 @@ read speed
 read current
 
 back-to-back.
+
 
 ## Solution
 Implement cycle-based telemetry polling.
@@ -174,11 +184,12 @@ This reduces bus load and increases reliability.
 # Final Working Architecture
 ## Write Commands
 
-Function:
+### Function:
 
 0x06
 
-Registers used:
+
+### Registers used:
 
 Register	Description
 0x0136	Control mode
@@ -186,7 +197,8 @@ Register	Description
 0x0066	Run command
 0x0056	Speed reference
 
-Startup sequence:
+
+### Startup sequence:
 
 set internal control mode
 clear fault
@@ -196,20 +208,25 @@ run forward
 set target speed
 Read Commands
 
-Function:
+
+
+### Function:
 
 0x03
 
-Registers used:
+
+### Registers used:
 
 Register	Data
 0x005F	Actual motor speed
 0x00B6	Motor current
 
-Final Telemetry Logging Format
+
+### Final Telemetry Logging Format
 t_ms,cmd_rpm,speed_raw,curr_raw,curr_A
 
-Example output:
+
+### Example output:
 991777,1000,1000,15,0.600
 991977,1000,990,15,0.600
 992177,1000,990,17,0.680
