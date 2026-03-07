@@ -40,7 +40,7 @@ The Arduino acts as a **supervisory controller**, sending commands and collectin
 
 ## Image of Hardware Setup  
   
-![Alt text]("C:\Users\unasfred\Downloads\IMG_6052.jpg")
+![Alt text]("AGV_Project/05_Controls/Motor_Driver_characterization/IMG_6052.jpg")
 
 
 ---
