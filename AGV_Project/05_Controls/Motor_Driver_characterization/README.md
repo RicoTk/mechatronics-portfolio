@@ -38,10 +38,6 @@ The motor driver internally performs closed-loop control of the motor using a sp
 
 The Arduino acts as a **supervisory controller**, sending commands and collecting data.
 
-## Image of Hardware Setup  
-  
-![Alt text]("AGV_Project/05_Controls/Motor_Driver_characterization/IMG_6052.jpg")
-
 
 ---
 
