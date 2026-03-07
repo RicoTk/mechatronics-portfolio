@@ -38,6 +38,11 @@ The motor driver internally performs closed-loop control of the motor using a sp
 
 The Arduino acts as a **supervisory controller**, sending commands and collecting data.
 
+## Image of Hardware Setup  
+  
+![Alt text]("C:\Users\unasfred\Downloads\IMG_6052.jpg")
+
+
 ---
 
 # Communication Architecture
@@ -327,3 +332,4 @@ This project successfully demonstrated control and characterization of a BLDC mo
 Through step response, load testing, and disturbance rejection experiments, the system's dynamic behavior and control characteristics were experimentally validated.  
   
 The results confirm that the motor driver provides robust speed regulation and strong disturbance rejection, making it suitable for integration into higher-level robotic and vehicle control systems.  
+
