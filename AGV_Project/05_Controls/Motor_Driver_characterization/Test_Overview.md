@@ -63,9 +63,9 @@ Protocol: Modbus RTU
 | `0x00B6` | Motor current |
 | `0x0076` | Fault register |
 
-Commands were issued using Modbus function codes:
+Commands were issued using Modbus function codes:  
 
-0x03 Read Holding Register  
+0x03 Read Holding Register   
 0x06 Write Single Register  
 
 
@@ -83,13 +83,12 @@ The Arduino firmware performs three main tasks:
 
 The following data was recorded during experiments:
 
-time  
+time    
 commanded speed  
 actual speed  
 motor current  
 
-
-Data was exported to CSV format and analyzed using MATLAB / Python plotting tools.
+Data was exported to CSV format and analyzed using MATLAB / Python plotting tools.  
 
 ---
 
@@ -97,30 +96,30 @@ Data was exported to CSV format and analyzed using MATLAB / Python plotting tool
 
 ### Objective
 
-Characterize the dynamic response of the motor-driver system without external load.
+Characterize the dynamic response of the motor-driver system without external load.  
 
 ### Test Sequence
 
-The motor was commanded through a sequence of speed steps:
+The motor was commanded through a sequence of speed steps:  
+  
+0 RPM  
+500 RPM  
+1500 RPM  
+2500 RPM  
+3000 RPM  
+1500 RPM  
+0 RPM  
 
-0 RPM
-500 RPM
-1500 RPM
-2500 RPM
-3000 RPM
-1500 RPM
-0 RPM
 
-
-Each step was held long enough for the system to reach steady state.
+Each step was held long enough for the system to reach steady state.  
 
 ### Observations
 
 Key observations include:
 
-- The speed response follows approximately **first-order behavior**
-- The system settles quickly with minimal overshoot
-- Current spikes during acceleration and drops once steady state is reached
+- The speed response follows approximately **first-order behavior**  
+- The system settles quickly with minimal overshoot  
+- Current spikes during acceleration and drops once steady state is reached  
 
 Estimated system properties:
 
@@ -130,7 +129,7 @@ Estimated system properties:
 | Settling time | ~1 s |
 | Maximum tested speed | ~3000 RPM |
 
-This indicates a well-tuned internal controller.
+This indicates a well-tuned internal controller.  
 
 ---
 
@@ -138,9 +137,8 @@ This indicates a well-tuned internal controller.
 
 ### Objective
 
-Evaluate how additional load affects system dynamics.
-
-A load was applied to the motor shaft during the test sequence.
+Evaluate how additional load affects system dynamics.  
+A load was applied to the motor shaft during the test sequence.  
 
 ### Observations
 
@@ -162,13 +160,12 @@ Evaluate the motor driver's ability to maintain speed when external torque distu
 
 ### Procedure
 
-The motor was commanded to run at constant speed:
-
-1500 RPM  
-2500 RPM  
-
-
-External load was applied manually to the shaft for short intervals.
+The motor was commanded to run at constant speed:  
+  
+1500 RPM   
+2500 RPM   
+  
+External load was applied manually to the shaft for short intervals.  
 
 ### Observations
 
@@ -177,46 +174,9 @@ During disturbance:
 - Speed dropped slightly but remained close to the command value
 - Current increased significantly to compensate for the load
 
-Measured current spikes reached approximately:
-
-~5 A
-
-
-After the disturbance was removed:
-
-- Current quickly returned to nominal levels
-- Speed recovered almost immediately
-
-### Interpretation
-
-This behavior indicates:
-
-- Strong disturbance rejection
-- Aggressive internal speed loop
-- Current-limited torque response
-
----
-
-# System Behavior Summary
-
-From the experiments performed, the motor-driver system exhibits the following characteristics:
-
-| Property | Observation |
-|--------|--------|
-| Speed loop behavior | Stable and responsive |
-| Dynamic model | Approximate first-order system |
-| Time constant | ~0.25–0.35 s |
-| Settling time | ~1 s |
-| Maximum observed current | ~5 A |
-| Disturbance rejection | Strong |
-
-The driver maintains speed by increasing motor current when torque demand increases.
-
----
-
-# Control Architecture Insight
-
-The experiments confirm the following control hierarchy:
+Measured current spikes reached approximately:  
+  
+~5 A  
 
 
 After the disturbance was removed:
@@ -247,22 +207,37 @@ From the experiments performed, the motor-driver system exhibits the following c
 | Maximum observed current | ~5 A |
 | Disturbance rejection | Strong |
 
-The driver maintains speed by increasing motor current when torque demand increases.
+The driver maintains speed by increasing motor current when torque demand increases.  
 
----
+After the disturbance was removed:
+
+- Current quickly returned to nominal levels
+- Speed recovered almost immediately
+
+---  
+
+### Interpretation
+
+This behavior indicates:
+
+- Strong disturbance rejection
+- Aggressive internal speed loop
+- Current-limited torque response
+
+---  
 
 # Control Architecture Insight
 
 The experiments confirm the following control hierarchy:
 
 External Controller (Arduino)  
-↓
+↓  
 Speed Command (Modbus)  
-↓
+↓  
 Motor Driver Speed Loop  
-↓
+↓  
 Internal Current Control  
-↓
+↓  
 Motor Torque  
 
 This is a **cascaded control architecture** commonly used in robotics and electric vehicles.
@@ -291,8 +266,7 @@ Implement velocity ramp generators instead of instantaneous speed commands.
 
 Example:
 
-0 → 3000 RPM over 5 seconds
-
+0 → 3000 RPM over 5 seconds  
 
 This introduces:
 
@@ -304,7 +278,7 @@ This introduces:
 
 ### System Identification and Modeling
 
-Using the experimental data collected, a mathematical model of the motor-drive system will be developed.
+Using the experimental data collected, a mathematical model of the motor-drive system will be developed in the future.
 
 Possible tools:
 
@@ -328,28 +302,28 @@ Future work will implement higher-level control strategies such as:
 
 # Repository Structure
 
-Motor_Drive_Characterization/
-
-README.md
-step_test_data.csv
-disturbance_test_data.csv
-
-plots/
-step_test_response.png
-loaded_step_response.png
-disturbance_rejection.png
-
-scripts/
-DisturbanceRejectionTest.ino
-DriverStepTest_Day3.ino
-
+Motor_Drive_Characterization/  
+  
+README.md  
+step_test_data.csv  
+disturbance_test_data.csv  
+  
+plots/  
+step_test_response.png  
+loaded_step_response.png  
+disturbance_rejection.png  
+  
+scripts/  
+DisturbanceRejectionTest.ino  
+DriverStepTest_Day3.ino  
+  
 
 ---
 
 # Conclusion
 
-This project successfully demonstrated control and characterization of a BLDC motor driver using Modbus RTU communication.
-
-Through step response, load testing, and disturbance rejection experiments, the system's dynamic behavior and control characteristics were experimentally validated.
-
-The results confirm that the motor driver provides robust speed regulation and strong disturbance rejection, making it suitable for integration into higher-level robotic and vehicle control systems.
+This project successfully demonstrated control and characterization of a BLDC motor driver using Modbus RTU communication.  
+  
+Through step response, load testing, and disturbance rejection experiments, the system's dynamic behavior and control characteristics were experimentally validated.  
+  
+The results confirm that the motor driver provides robust speed regulation and strong disturbance rejection, making it suitable for integration into higher-level robotic and vehicle control systems.  
