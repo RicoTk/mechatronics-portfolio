@@ -168,7 +168,3 @@ This study demonstrates a full **physics-based drivetrain design workflow**, inc
 - Performance evaluation
 - Constraint identification
 - Trade study and optimization
-
----
-
-## 📁 Project Structure
