@@ -147,16 +147,16 @@ At this ratio:
 
 ## 📁 Project Structure
 
-01_Longitudinal_Model/
-├── Variables.py
-├── longitudinal_analysis.py
-├── plots/
-│ ├── force_vs_speed.png
-│ ├── current_vs_time.png
-│ ├── required_vs_available.png
-│ ├── gear_ratio_current.png
-│ ├── gear_ratio_speed.png
-├── README.md
+01_Longitudinal_Model/  
+├── Variables.py  
+├── longitudinal_analysis.py  
+├── plots/  
+│ ├── force_vs_speed.png  
+│ ├── current_vs_time.png  
+│ ├── required_vs_available.png  
+│ ├── gear_ratio_current.png  
+│ ├── gear_ratio_speed.png  
+├── README.md  
 
 ---
 
