@@ -123,7 +123,7 @@ At this ratio:
 - Vehicle remains capable of:
   - Flat operation
   - 5% and 10% grade climbing
-- Acceptable top speeds are maintained
+- Acceptable top speeds are maintained (between 3 and 5 m/s)
 
 ---
 
