@@ -10,7 +10,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 **File:** `force_vs_speed.png`
 
-**Description:**
+**Description:** 
 - Shows tractive force, resistive force, and net force vs vehicle speed
 - Used to determine:
   - Whether the vehicle can accelerate
