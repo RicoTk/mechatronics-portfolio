@@ -54,7 +54,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 ### 4. Steady-State Current vs Gear Ratio
 
-![Steady State Current vs Gear Ratio](hhttps://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/gear_ratio_current.png)
+![Steady State Current vs Gear Ratio](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/gear_ratio_current.png)
 
 **Description:**
 - Shows how required steady-state current changes with gear ratio
