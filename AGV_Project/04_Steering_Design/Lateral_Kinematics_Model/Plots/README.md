@@ -24,7 +24,7 @@ Where:
 ## 📊 Plots
 
 ### Turning Radius vs Steering Angle
-![Turning Radius](AGV_Project/04_Steering_Design/Lateral_Kinematics_Model/Plots/turning_radius_vs_steering_angle.png)
+![Turning Radius](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/04_Steering_Design/Lateral_Kinematics_Model/Plots/turning_radius_vs_steering_angle.png)
 
 ---
 
