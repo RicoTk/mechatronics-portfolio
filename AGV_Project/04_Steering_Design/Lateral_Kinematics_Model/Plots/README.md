@@ -10,14 +10,12 @@ Implement a first-order lateral dynamics model to analyze vehicle turning behavi
 
 The vehicle is approximated as a bicycle model:
 
-\[
-R = \frac{L}{\tan(\delta)}
-\]
+R = L / tan(delta)
 
 Where:
-- \(R\) = turning radius
-- \(L\) = wheelbase
-- \(\delta\) = steering angle
+- \(R) = turning radius
+- \(L) = wheelbase
+- \(delta) = steering angle
 
 ---
 
