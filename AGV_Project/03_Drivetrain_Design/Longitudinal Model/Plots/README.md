@@ -8,7 +8,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 ### 1. Force vs Speed
 
-**File:** `force_vs_speed.png`
+![Force vs Speed](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/force_vs_speed.png)
 
 **Description:** 
 - Shows tractive force, resistive force, and net force vs vehicle speed
@@ -23,7 +23,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 ### 2. Current vs Time
 
-**File:** `current_vs_time.png`
+![Current vs Time](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/current_vs_time.png)
 
 **Description:**
 - Shows motor current during acceleration for multiple grades
@@ -38,7 +38,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 ### 3. Required vs Available Current
 
-**File:** `required_vs_available.png`
+![Required vs Available Current](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/required_vs_available.png)
 
 **Description:**
 - Compares:
@@ -54,7 +54,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 ### 4. Steady-State Current vs Gear Ratio
 
-**File:** `gear_ratio_current.png`
+![Steady State Current vs Gear Ratio](hhttps://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/gear_ratio_current.png)
 
 **Description:**
 - Shows how required steady-state current changes with gear ratio
@@ -68,7 +68,7 @@ This folder contains the key plots generated from the longitudinal vehicle model
 
 ### 5. Top Speed vs Gear Ratio
 
-**File:** `gear_ratio_speed.png`
+![Top Speed vs Gear Ratio](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/Longitudinal%20Model/Plots/gear_ratio_speed.png)
 
 **Description:**
 - Shows how top speed varies with gear ratio for different grades
