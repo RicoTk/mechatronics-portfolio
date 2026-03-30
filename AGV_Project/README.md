@@ -19,3 +19,9 @@ Results (plots/tables, what you achieved)
 Lessons learned
 
 Next steps
+
+## Vehicle Dynamics Modeling
+
+- Longitudinal Model → Drivetrain sizing and force analysis
+- Lateral Model → Turning and stability analysis
+- Combined → (future work)
