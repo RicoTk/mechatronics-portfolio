@@ -24,22 +24,22 @@ Where:
 ## 📊 Plots
 
 ### Turning Radius vs Steering Angle
-![Turning Radius](plots/turning_radius.png)
+![Turning Radius](plots/turning_radius_vs_steering_angle.png)
 
 ---
 
 ### Ackermann Steering Angles
-![Ackermann](plots/ackermann_angles.png)
+![Ackermann](plots/ackermann_steering_angles_vs_turning_radius.png)
 
 ---
 
 ### Lateral Acceleration vs Speed
-![Lateral Acceleration](plots/lateral_acceleration.png)
+![Lateral Acceleration](plots/lateral_acceleration_vs_speed.png)
 
 ---
 
 ### Max Safe Speed vs Steering Angle
-![Safe Speed](plots/safe_speed.png)
+![Safe Speed](plots/max_safe_speed_vs_steering_angle.png)
 
 ---
 
