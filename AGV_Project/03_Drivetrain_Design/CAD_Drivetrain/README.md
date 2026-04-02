@@ -37,13 +37,13 @@ The design was developed in SolidWorks and focuses on:
 ## CAD Model
 
 ### Isometric View
-![Isometric View]([images/gearbox_iso.png](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gearbox_iso.png))
+![Isometric View](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gearbox_iso.png)
 
 ### Internal Gear Layout
-![Gear Layout]([images/gear_layout.png](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gear_layout.png))
+![Gear Layout](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gear_layout.png)
 
 ### Alternate Isometric View
-![Alt View]([images/gearbox_iso_2.png](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gearbox_iso_2.png))
+![Alt View](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gearbox_iso_2.png)
 
 ---
 
@@ -75,17 +75,17 @@ The design was developed in SolidWorks and focuses on:
 
 ## Exploded View
 
-![Exploded View]([images/gearbox_exploded.png](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gearbox_exploded2.png))
+![Exploded View](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/gearbox_exploded2.png)
 
 ---
 
 ## Front and Top Views
 
 ### Front View
-![Front View]([images/front_view.png](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/front_view.png))
+![Front View](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/front_view.png)
 
 ### Top View
-![Top View]([images/top_view.png](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/top_view.png))
+![Top View](https://github.com/RicoTk/mechatronics-portfolio/blob/main/AGV_Project/03_Drivetrain_Design/CAD_Drivetrain/Pictures/top_view.png)
 
 ---
 
